@@ -223,6 +223,11 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#onechat" class="toc-h1 toc-link" data-title="onechat">Onechat</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-facebook-pages" class="toc-h2 toc-link" data-title="get-user-facebook-pages">Get user Facebook Pages</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#kittens" class="toc-h1 toc-link" data-title="kittens">Kittens</a>
@@ -250,7 +255,65 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='onechat'>Onechat</h1><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+        <h1 id='onechat'>Onechat</h1><h2 id='get-user-facebook-pages'>Get user Facebook Pages</h2>
+<p>This endpoint will retreive all facebook pages that are owned or managed by by the currently logged in user</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://onechat.ai/getUserPages</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token_generator</td>
+<td>correspondent to facebook access token of the logged in user included so that our backend is able to get the facebook pages of the user.</td>
+</tr>
+<tr>
+<td>pagination_number</td>
+<td>page number to be .retrieved, by default the api send 30 records per call</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>the currently logged in user ID .</td>
+</tr>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token_generator"</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="s2">"srrcknijt89ttl0me8es07ovtp"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pagination_number"</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="w">                 </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a9734c52736bebabf0e2926"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"metadata"</span><span class="w"> </span><span class="p">:</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reason"</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="s2">"Getting Pages succeeded"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w">  </span><span class="p">:</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"pages"</span><span class="w"> </span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"_id"</span><span class="w">             </span><span class="p">:</span><span class="w"> </span><span class="s2">"5a96080e273673954ee6d813"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"page_id"</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s2">"200622567189595"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"page_name"</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s2">"Dummy page"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"page_image_url"</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://someimageurl.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"page_active"</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+     </span><span class="s2">"pages_limit"</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
@@ -286,9 +349,9 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -340,7 +403,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -379,7 +442,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
