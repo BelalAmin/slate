@@ -18,6 +18,62 @@ search: true
 ---
 
 # Onechat
+
+## Get user Facebook Pages
+
+This endpoint will retreive all facebook pages that are owned or managed by by the currently logged in user
+
+### HTTP Request
+
+`GET http://onechat.ai/getUserPages`
+
+### Query Parameters
+
+Parameter | Description
+--------- |-----------
+access_token_generator| correspondent to facebook access token of the logged in user included so that our backend is able to get the facebook pages of the user.
+pagination_number |page number to be .retrieved, by default the api send 30 records per call
+user_id |the currently logged in user ID .
+
+```json
+{
+  "access_token_generator"  : "srrcknijt89ttl0me8es07ovtp",
+  "pagination_number"       : 1,
+  "user_id"                 : "5a9734c52736bebabf0e2926"
+}
+```
+
+### Response Parameters
+
+key | Description
+--------- |-----------
+
+
+```json
+{
+  "metadata" : 
+  {
+    "result"  : "SUCCESS",
+    "reason"  : "Getting Pages succeeded"
+  },
+  "data"  : 
+  {
+      "pages" :
+      [
+        {
+          "_id"             : "5a96080e273673954ee6d813",
+          "page_id"         : "200622567189595",
+          "page_name"       : "Dummy page",
+          "page_image_url"  : "https://someimageurl.com",
+          "page_active"     : false
+        }
+     ],
+     "pages_limit"  : 0,
+  }
+}
+```
+
+
 # Kittens
 
 ## Get All Kittens
